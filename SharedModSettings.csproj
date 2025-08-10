@@ -13,7 +13,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net9</TargetFramework>
     <LangVersion>preview</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,8 +33,6 @@
     <AppPath Condition="Exists('$(HOME)/.steam/steam/steamapps/common/$(AppName)/')">$(HOME)/.steam/steam/steamapps/common/$(AppName)/</AppPath>
     <AppPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\$(AppName)\')">C:\Program Files (x86)\Steam\steamapps\common\$(AppName)\</AppPath>
 
-    <AppData Condition="Exists('$(AppPath)$(AppName)_Data')">$(AppPath)$(AppName)_Data\Managed\</AppData>
-
     <AlternateDataPath>$(AppPath)\Alt\</AlternateDataPath>
     <AlternateDataPath Condition="Exists('$(AppPath)')">$(AppPath)_altData</AlternateDataPath>
   </PropertyGroup>
@@ -45,17 +43,20 @@
       <HintPath Condition="Exists('$(AppPath)0Harmony.dll')">$(AppPath)0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Elements.Core">
-      <HintPath>$(AppData)Elements.Core.dll</HintPath>
+      <HintPath>$(AppPath)Elements.Core.dll</HintPath>
     </Reference>
     <Reference Include="FrooxEngine">
-      <HintPath>$(AppData)FrooxEngine.dll</HintPath>
+      <HintPath>$(AppPath)FrooxEngine.dll</HintPath>
     </Reference>
     <Reference Include="$(AppName)ModLoader">
       <HintPath>$(AppPath)$(AppName)ModLoader.dll</HintPath>
       <HintPath>$(AppPath)Libraries\$(AppName)ModLoader.dll</HintPath>
     </Reference>
     <Reference Include="System.Memory">
-      <HintPath>$(AppData)System.Memory.dll</HintPath>
+      <HintPath>$(AppPath)System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Renderite.Shared">
+      <HintPath>$(AppPath)Renderite.Shared.dll</HintPath>
     </Reference>
   </ItemGroup>
 
